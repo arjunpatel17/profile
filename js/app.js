@@ -91,6 +91,7 @@
 
   // Searchable data from the page
   const searchData = [
+    { title: 'Senior Software Engineer', subtitle: 'Microsoft', tags: 'experience', section: 'experience', keywords: 'azure cloud networking virtual network manager ip address verifier routing appliance' },
     { title: 'R&D Software Engineer', subtitle: 'Keysight Technologies', tags: 'experience', section: 'experience', keywords: 'angular typescript node koa express jenkins full stack web' },
     { title: 'Graduate Research Assistant', subtitle: 'Georgia Tech Research Institute — ATAS Lab', tags: 'experience', section: 'experience', keywords: 'dsp signal processing matlab labview research' },
     { title: 'Electrical Engineer', subtitle: 'Enercon Services', tags: 'experience', section: 'experience', keywords: 'power systems arc flash battery sizing' },
