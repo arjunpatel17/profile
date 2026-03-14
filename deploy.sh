@@ -14,7 +14,7 @@ set -euo pipefail
 # ============================================
 
 RESOURCE_GROUP="arjun-profile-rg"
-LOCATION="eastus"
+LOCATION="eastus2"
 ACR_NAME="arjunprofileacr"
 IMAGE_NAME="netflix-profile"
 IMAGE_TAG="latest"
