@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arjun Patel | Portfolio</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-left">
+      <a href="#" class="logo">AP</a>
+      <ul class="nav-links">
+        <li><a href="#hero" class="nav-link active" data-section="hero">Home</a></li>
+        <li><a href="#experience" class="nav-link" data-section="experience">Experience</a></li>
+        <li><a href="#education" class="nav-link" data-section="education">Education</a></li>
+        <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+        <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="nav-icon" id="searchBtn" aria-label="Search"><i class="fas fa-search"></i></button>
+      <button class="nav-icon" id="analyticsBtn" aria-label="Analytics"><i class="fas fa-chart-bar"></i></button>
+      <div class="profile-avatar" id="navAvatar">
+        <img src="assets/profile.jpg" alt="Arjun Patel" onerror="this.style.display='none'; this.parentElement.innerHTML='<span>AP</span>';">
+      </div>
+    </div>
+  </nav>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-container">
+      <i class="fas fa-search"></i>
+      <input type="text" id="searchInput" placeholder="Search experience, skills, projects..." autocomplete="off">
+      <button class="search-close" id="searchClose">&times;</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+
+  <!-- Analytics Dashboard Modal -->
+  <div class="modal-overlay" id="analyticsModal">
+    <div class="modal-content analytics-dashboard">
+      <div class="modal-header">
+        <h2><i class="fas fa-chart-line"></i> Visitor Analytics</h2>
+        <button class="modal-close" id="analyticsClose">&times;</button>
+      </div>
+      <div class="analytics-grid">
+        <div class="analytics-card">
+          <div class="analytics-number" id="totalVisits">0</div>
+          <div class="analytics-label">Total Visits</div>
+        </div>
+        <div class="analytics-card">
+          <div class="analytics-number" id="uniqueVisitors">0</div>
+          <div class="analytics-label">Unique Visitors</div>
+        </div>
+        <div class="analytics-card">
+          <div class="analytics-number" id="avgDuration">0s</div>
+          <div class="analytics-label">Avg. Duration</div>
+        </div>
+        <div class="analytics-card">
+          <div class="analytics-number" id="topSection">—</div>
+          <div class="analytics-label">Most Viewed Section</div>
+        </div>
+      </div>
+      <div class="analytics-section">
+        <h3>Section Views</h3>
+        <div class="analytics-bars" id="sectionBars"></div>
+      </div>
+      <div class="analytics-section">
+        <h3>Recent Visitors</h3>
+        <div class="analytics-table" id="recentVisitors"></div>
+      </div>
+      <div class="analytics-section">
+        <h3>Traffic Sources</h3>
+        <div class="analytics-bars" id="trafficSources"></div>
+      </div>
+      <div class="analytics-section">
+        <h3>Devices</h3>
+        <div class="analytics-bars" id="deviceStats"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-background">
+      <div class="hero-gradient"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-profile">
+        <div class="profile-image-container">
+          <img src="assets/profile.jpg" alt="Arjun Patel" class="profile-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="profile-placeholder" style="display:none;">
+            <i class="fas fa-user"></i>
+          </div>
+        </div>
+        <div class="hero-badge">Open to Opportunities</div>
+      </div>
+      <div class="hero-info">
+        <div class="hero-tag">FEATURED PROFILE</div>
+        <h1 class="hero-name">Arjun Patel</h1>
+        <h2 class="hero-title">R&D Software Engineer</h2>
+        <p class="hero-description">
+          Full-stack engineer at Keysight Technologies with expertise in Angular, 
+          Node.js, and embedded systems. Georgia Tech graduate with dual degrees in 
+          Electrical & Computer Engineering. Passionate about building scalable web 
+          applications and signal processing solutions.
+        </p>
+        <div class="hero-meta">
+          <span><i class="fas fa-map-marker-alt"></i> Atlanta, GA</span>
+          <span><i class="fas fa-building"></i> Keysight Technologies</span>
+          <span><i class="fas fa-graduation-cap"></i> Georgia Tech</span>
+        </div>
+        <div class="hero-actions">
+          <a href="#experience" class="btn-primary"><i class="fas fa-play"></i> Explore My Journey</a>
+          <a href="#contact" class="btn-secondary"><i class="fas fa-info-circle"></i> Get In Touch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Row -->
+  <section class="content-section" id="experience">
+    <h2 class="section-title">
+      <span>Work Experience</span>
+      <div class="section-controls">
+        <button class="scroll-btn scroll-left" data-row="experience-row" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+        <button class="scroll-btn scroll-right" data-row="experience-row" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </h2>
+    <div class="card-row" id="experience-row">
+      <!-- Keysight -->
+      <div class="card" data-category="experience">
+        <div class="card-image" style="background: linear-gradient(135deg, #1a5276, #2980b9);">
+          <img src="assets/keysight-logo.png" alt="Keysight Technologies" class="card-logo" onerror="this.style.display='none';">
+          <div class="card-badge">Current</div>
+          <div class="card-overlay">
+            <span class="card-tag">Full-Time</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>R&D Software Engineer</h3>
+          <p class="card-subtitle">Keysight Technologies</p>
+          <p class="card-date">June 2017 — Present</p>
+        </div>
+        <div class="card-expanded">
+          <ul>
+            <li>Full-stack development of Web & Desktop applications using Angular framework</li>
+            <li>Created reusable Angular framework libraries and custom web components</li>
+            <li>Developed REST APIs with KOA and Express architecture</li>
+            <li>CI/CD with Jenkins, Git, and Atlassian toolsets in Agile environment</li>
+            <li>Built enterprise-grade test & measurement software solutions</li>
+          </ul>
+          <div class="card-tech">
+            <span>Angular</span><span>TypeScript</span><span>Node.js</span><span>KOA</span><span>Express</span><span>Jenkins</span><span>Git</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GTRI -->
+      <div class="card" data-category="experience">
+        <div class="card-image" style="background: linear-gradient(135deg, #1a3a5c, #b3a369);">
+          <img src="assets/gtri-logo.png" alt="Georgia Tech Research Institute" class="card-logo" onerror="this.style.display='none';">
+          <div class="card-overlay">
+            <span class="card-tag">Research</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>Graduate Research Assistant</h3>
+          <p class="card-subtitle">Georgia Tech Research Institute — ATAS Lab</p>
+          <p class="card-date">Nov 2015 — June 2017</p>
+        </div>
+        <div class="card-expanded">
+          <ul>
+            <li>Developed Digital Signal Processing (DSP) algorithms under Dr. Alessio Medda</li>
+            <li>Data acquisition with NI DAQs, LabVIEW, and MATLAB</li>
+            <li>Applied advanced signal processing techniques for research projects</li>
+            <li>Published and presented research findings</li>
+          </ul>
+          <div class="card-tech">
+            <span>MATLAB</span><span>LabVIEW</span><span>DSP</span><span>NI DAQ</span><span>Python</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enercon -->
+      <div class="card" data-category="experience">
+        <div class="card-image" style="background: linear-gradient(135deg, #1a472a, #27ae60);">
+          <img src="assets/enercon-logo.png" alt="Enercon Services" class="card-logo" onerror="this.style.display='none';">
+          <div class="card-overlay">
+            <span class="card-tag">Engineering</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>Electrical Engineer</h3>
+          <p class="card-subtitle">Enercon Services</p>
+          <p class="card-date">Aug 2014 — July 2015</p>
+        </div>
+        <div class="card-expanded">
+          <ul>
+            <li>Power system analysis and electrical plant modeling</li>
+            <li>Arc Flash analysis using SKM software suite</li>
+            <li>Battery sizing calculations for blackout scenarios</li>
+            <li>Collaborated with utility companies on power infrastructure</li>
+          </ul>
+          <div class="card-tech">
+            <span>SKM</span><span>Power Systems</span><span>Arc Flash</span><span>AutoCAD</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GE -->
+      <div class="card" data-category="experience">
+        <div class="card-image" style="background: linear-gradient(135deg, #1a1a2e, #3498db);">
+          <img src="assets/ge-logo.png" alt="General Electric" class="card-logo" onerror="this.style.display='none';">
+          <div class="card-overlay">
+            <span class="card-tag">Internship</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>Hardware Engineering Intern</h3>
+          <p class="card-subtitle">General Electric</p>
+          <p class="card-date">May 2014 — Aug 2014</p>
+        </div>
+        <div class="card-expanded">
+          <ul>
+            <li>Single Board Computer (SBC) design and development</li>
+            <li>FPGA board development — SPR870B sensor processing board</li>
+            <li>High-speed signal design using Mentor Graphics tools</li>
+            <li>Hardware verification and testing procedures</li>
+          </ul>
+          <div class="card-tech">
+            <span>FPGA</span><span>Mentor Graphics</span><span>VHDL</span><span>PCB Design</span><span>Hardware</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Row -->
+  <section class="content-section" id="education">
+    <h2 class="section-title">
+      <span>Education</span>
+      <div class="section-controls">
+        <button class="scroll-btn scroll-left" data-row="education-row" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+        <button class="scroll-btn scroll-right" data-row="education-row" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </h2>
+    <div class="card-row" id="education-row">
+      <!-- MS -->
+      <div class="card card-wide" data-category="education">
+        <div class="card-image" style="background: linear-gradient(135deg, #1a3a5c, #b3a369);">
+          <img src="assets/gt-logo.png" alt="Georgia Tech" class="card-logo" onerror="this.style.display='none';">
+          <div class="card-badge">Master's</div>
+          <div class="card-overlay">
+            <span class="card-tag">Graduate</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>M.S. Electrical & Computer Engineering</h3>
+          <p class="card-subtitle">Georgia Institute of Technology</p>
+          <p class="card-date">Dec 2014 — May 2017</p>
+        </div>
+        <div class="card-expanded">
+          <ul>
+            <li><strong>Specializations:</strong> Digital Signal Processing, Control Systems</li>
+            <li>Graduate Research Assistant at GTRI ATAS Lab</li>
+            <li>Advanced coursework in DSP, Machine Learning, and Controls</li>
+          </ul>
+          <div class="card-tech">
+            <span>DSP</span><span>Control Systems</span><span>Machine Learning</span><span>MATLAB</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BS -->
+      <div class="card card-wide" data-category="education">
+        <div class="card-image" style="background: linear-gradient(135deg, #b3a369, #1a3a5c);">
+          <img src="assets/gt-logo.png" alt="Georgia Tech" class="card-logo" onerror="this.style.display='none';">
+          <div class="card-badge">Bachelor's</div>
+          <div class="card-overlay">
+            <span class="card-tag">Undergraduate</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>B.S. Electrical Engineering</h3>
+          <p class="card-subtitle">Georgia Institute of Technology</p>
+          <p class="card-date">Dec 2012 — Dec 2014</p>
+        </div>
+        <div class="card-expanded">
+          <ul>
+            <li>Core curriculum in circuits, electronics, and computer architecture</li>
+            <li>Senior Design Project: Electronic Chess Board (Team Lead)</li>
+            <li>Foundation in embedded systems and signal processing</li>
+          </ul>
+          <div class="card-tech">
+            <span>Circuits</span><span>Electronics</span><span>Embedded Systems</span><span>C/C++</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="content-section" id="skills">
+    <h2 class="section-title"><span>Technical Skills</span></h2>
+    <div class="skills-grid">
+      <div class="skill-category">
+        <h3 class="skill-category-title"><i class="fas fa-code"></i> Frontend</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>Angular</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="95"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>HTML / CSS / SCSS</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="95"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>TypeScript / JavaScript</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="90"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>React</span>
+              <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="50"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3 class="skill-category-title"><i class="fas fa-server"></i> Backend & Tools</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>Node.js / Express / KOA</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="85"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>Git / CI-CD / Jenkins</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="95"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>Docker / Kubernetes</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="80"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>REST APIs</span>
+              <span class="skill-level">Expert</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="90"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-category">
+        <h3 class="skill-category-title"><i class="fas fa-microchip"></i> Engineering</h3>
+        <div class="skill-items">
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>C / C++</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="75"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>MATLAB / LabVIEW</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="80"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>Digital Signal Processing</span>
+              <span class="skill-level">Advanced</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="80"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-header">
+              <span>FPGA / VHDL</span>
+              <span class="skill-level">Intermediate</span>
+            </div>
+            <div class="skill-bar"><div class="skill-fill" data-level="60"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Row -->
+  <section class="content-section" id="projects">
+    <h2 class="section-title">
+      <span>Featured Projects</span>
+      <div class="section-controls">
+        <button class="scroll-btn scroll-left" data-row="projects-row" aria-label="Scroll left"><i class="fas fa-chevron-left"></i></button>
+        <button class="scroll-btn scroll-right" data-row="projects-row" aria-label="Scroll right"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </h2>
+    <div class="card-row" id="projects-row">
+      <div class="card" data-category="project">
+        <div class="card-image" style="background: linear-gradient(135deg, #2c3e50, #e74c3c);">
+          <div class="card-icon"><i class="fas fa-chess-board"></i></div>
+          <div class="card-badge">Team Lead</div>
+          <div class="card-overlay">
+            <span class="card-tag">Embedded Systems</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>Electronic Chess Board</h3>
+          <p class="card-subtitle">Senior Design Project</p>
+        </div>
+        <div class="card-expanded">
+          <ul>
+            <li>Led 6-person team in designing a fully electronic chess board</li>
+            <li>Embedded system with microcontroller + custom circuit design</li>
+            <li>Developed chess algorithms and piece detection logic</li>
+          </ul>
+          <div class="card-tech">
+            <span>Microcontroller</span><span>Circuit Design</span><span>C</span><span>Algorithms</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-category="project">
+        <div class="card-image" style="background: linear-gradient(135deg, #1a1a2e, #e94560);">
+          <div class="card-icon"><i class="fas fa-robot"></i></div>
+          <div class="card-overlay">
+            <span class="card-tag">Robotics</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>Behavioral Robotics</h3>
+          <p class="card-subtitle">LEGO Bot with TI MSP432</p>
+        </div>
+        <div class="card-expanded">
+          <ul>
+            <li>Built autonomous robot with TI MSP432 microcontroller</li>
+            <li>RTOS multithreading for real-time sensor processing</li>
+            <li>Differential steering and trajectory planning algorithms</li>
+          </ul>
+          <div class="card-tech">
+            <span>RTOS</span><span>MSP432</span><span>C</span><span>Sensors</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-category="project">
+        <div class="card-image" style="background: linear-gradient(135deg, #0c3547, #1cb5e0);">
+          <div class="card-icon"><i class="fas fa-globe"></i></div>
+          <div class="card-overlay">
+            <span class="card-tag">Web Development</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>Personal Portfolio (Angular)</h3>
+          <p class="card-subtitle">Full-Stack Web Application</p>
+        </div>
+        <div class="card-expanded">
+          <ul>
+            <li>Built responsive Angular 10 portfolio with PrimeNG</li>
+            <li>Deployed on Azure Kubernetes Service (AKS)</li>
+            <li>Docker containerized with Nginx reverse proxy</li>
+          </ul>
+          <div class="card-tech">
+            <span>Angular</span><span>Docker</span><span>Kubernetes</span><span>Azure</span><span>Nginx</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" data-category="project">
+        <div class="card-image" style="background: linear-gradient(135deg, #4a0e4e, #8e44ad);">
+          <div class="card-icon"><i class="fas fa-wave-square"></i></div>
+          <div class="card-overlay">
+            <span class="card-tag">Signal Processing</span>
+          </div>
+        </div>
+        <div class="card-info">
+          <h3>DSP Research — GTRI</h3>
+          <p class="card-subtitle">Signal Processing Algorithms</p>
+        </div>
+        <div class="card-expanded">
+          <ul>
+            <li>Developed advanced DSP algorithms for defense applications</li>
+            <li>Data acquisition and analysis with NI hardware</li>
+            <li>Published research in signal processing domain</li>
+          </ul>
+          <div class="card-tech">
+            <span>MATLAB</span><span>Python</span><span>DSP</span><span>NI DAQ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="content-section contact-section" id="contact">
+    <h2 class="section-title"><span>Get In Touch</span></h2>
+    <div class="contact-grid">
+      <div class="contact-info-panel">
+        <h3>Let's Connect</h3>
+        <p>Whether you have an opportunity, a project idea, or just want to say hello — I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a href="https://www.linkedin.com/in/mr-arjun-patel/" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <i class="fab fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/arjunpatel" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="mailto:arjun@example.com" class="contact-link">
+            <i class="fas fa-envelope"></i>
+            <span>Email</span>
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm">
+        <div class="form-group">
+          <input type="text" id="contactName" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <input type="email" id="contactEmail" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <textarea id="contactMessage" placeholder="Your Message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-left">
+        <span class="footer-logo">AP</span>
+        <p>&copy; 2026 Arjun Patel. All rights reserved.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/mr-arjun-patel/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/arjunpatel" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Netflix-style "More Info" Modal -->
+  <div class="modal-overlay" id="cardModal">
+    <div class="modal-content card-modal">
+      <button class="modal-close" id="cardModalClose">&times;</button>
+      <div id="cardModalBody"></div>
+    </div>
+  </div>
+
+  <script src="js/analytics.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
