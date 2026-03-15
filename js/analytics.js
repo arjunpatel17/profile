@@ -86,7 +86,7 @@
       const raw = localStorage.getItem(STORAGE_KEY);
       if (raw) return JSON.parse(raw);
     } catch { /* ignore corrupt data */ }
-    return { visits: [], sectionViews: {}, sources: {}, devices: {}, browsers: {} };
+    return { visits: [], sectionViews: {}, sources: {}, devices: {}, browsers: {}, locations: {} };
   }
 
   function saveData(data) {
@@ -127,19 +127,31 @@
     return session;
   }
 
+  // ---- Geolocation via IP (no permission needed) ----
+  function fetchLocation() {
+    return fetch('https://ipapi.co/json/')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        return (d.city && d.country_name) ? d.city + ', ' + d.region + ', ' + d.country_name : 'Unknown';
+      })
+      .catch(function () { return 'Unknown'; });
+  }
+
   // ---- Record Visit ----
   function recordVisit() {
     const data = loadData();
     const session = getSession();
 
-    data.visits.push({
+    const visit = {
       id: session.id,
       visitorId: session.visitorId,
       timestamp: new Date().toISOString(),
       device: session.device,
       browser: session.browser,
-      source: session.source
-    });
+      source: session.source,
+      location: 'Detecting...'
+    };
+    data.visits.push(visit);
 
     // Increment aggregates
     data.sources[session.source] = (data.sources[session.source] || 0) + 1;
@@ -147,6 +159,18 @@
     data.browsers[session.browser] = (data.browsers[session.browser] || 0) + 1;
 
     saveData(data);
+
+    // Fetch location async and update
+    fetchLocation().then(function (loc) {
+      const d = loadData();
+      const lastVisit = d.visits[d.visits.length - 1];
+      if (lastVisit && lastVisit.id === session.id) {
+        lastVisit.location = loc;
+      }
+      if (!d.locations) d.locations = {};
+      d.locations[loc] = (d.locations[loc] || 0) + 1;
+      saveData(d);
+    });
 
     // Track in Application Insights
     if (window.__appInsights) {
@@ -230,6 +254,9 @@
     // Devices
     renderBars('deviceStats', data.devices);
 
+    // Locations
+    renderBars('locationStats', data.locations || {});
+
     // Recent visitors table
     renderRecentVisitors(data.visits);
   }
@@ -262,6 +289,7 @@
         <thead>
           <tr>
             <th>Time</th>
+            <th>Location</th>
             <th>Device</th>
             <th>Browser</th>
             <th>Source</th>
@@ -272,6 +300,7 @@
           ${recent.map(v => `
             <tr>
               <td>${formatTime(v.timestamp)}</td>
+              <td>${escapeHtml(v.location || '—')}</td>
               <td>${escapeHtml(v.device || '—')}</td>
               <td>${escapeHtml(v.browser || '—')}</td>
               <td>${escapeHtml(v.source || '—')}</td>
