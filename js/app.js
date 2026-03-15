@@ -179,10 +179,24 @@
     });
   });
 
-  // ---- Analytics Modal ----
+  // ---- Analytics Modal (admin only) ----
   const analyticsBtn = document.getElementById('analyticsBtn');
   const analyticsModal = document.getElementById('analyticsModal');
   const analyticsClose = document.getElementById('analyticsClose');
+
+  // Show analytics button only for admin
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('admin') === '1') {
+    analyticsBtn.style.display = '';
+  }
+
+  // Secret shortcut: Ctrl+Shift+A toggles analytics button
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+      e.preventDefault();
+      analyticsBtn.style.display = analyticsBtn.style.display === 'none' ? '' : 'none';
+    }
+  });
 
   function openAnalytics() {
     analyticsModal.classList.add('active');
