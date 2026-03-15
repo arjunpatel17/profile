@@ -198,7 +198,7 @@
     if (e.target === analyticsModal) closeAnalytics();
   });
 
-  // ---- Contact Form (simple handler) ----
+  // ---- Contact Form ----
   const contactForm = document.getElementById('contactForm');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -209,17 +209,36 @@
 
       if (!name || !email || !message) return;
 
-      // You can integrate with FormSpree, Azure Functions, etc.
-      // For now, show a success message
       const btn = contactForm.querySelector('.btn-primary');
-      btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-      btn.style.background = '#27ae60';
-      contactForm.reset();
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      btn.disabled = true;
 
-      setTimeout(() => {
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-        btn.style.background = '';
-      }, 3000);
+      fetch(contactForm.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(contactForm)
+      })
+      .then(response => {
+        if (response.ok) {
+          btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+          btn.style.background = '#27ae60';
+          contactForm.reset();
+        } else {
+          btn.innerHTML = '<i class="fas fa-times"></i> Failed to Send';
+          btn.style.background = '#e74c3c';
+        }
+      })
+      .catch(() => {
+        btn.innerHTML = '<i class="fas fa-times"></i> Failed to Send';
+        btn.style.background = '#e74c3c';
+      })
+      .finally(() => {
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+          btn.style.background = '';
+          btn.disabled = false;
+        }, 3000);
+      });
 
       if (window.__appInsights) {
         window.__appInsights.trackEvent({ name: 'ContactFormSubmission' });
