@@ -12,7 +12,7 @@
 
   // ---- Azure Application Insights (optional) ----
   // Replace with your real instrumentation key / connection string to enable cloud analytics.
-  const AI_CONNECTION_STRING = ''; // e.g. 'InstrumentationKey=xxxxxxxx-xxxx-...;IngestionEndpoint=...'
+  const AI_CONNECTION_STRING = 'InstrumentationKey=2e006d29-3ceb-4684-815a-a788327d8257;IngestionEndpoint=https://eastus2-3.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus2.livediagnostics.monitor.azure.com/;ApplicationId=26ee58fa-1edd-49f4-ac1b-ef4e7394ee02'; // e.g. 'InstrumentationKey=xxxxxxxx-xxxx-...;IngestionEndpoint=...'
 
   function loadAppInsightsSDK() {
     if (!AI_CONNECTION_STRING) return;
