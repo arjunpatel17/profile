@@ -1307,3 +1307,150 @@ img {
     gap: 0;
   }
 }
+
+/* ============================================
+   Card Detail Modal
+   ============================================ */
+.card-modal {
+  max-width: 700px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-modal-hero {
+  position: relative;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-modal-hero .card-modal-icon {
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.85);
+  z-index: 1;
+}
+
+.card-modal-hero .card-modal-logo {
+  max-width: 120px;
+  max-height: 80px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  z-index: 1;
+}
+
+.card-modal-hero .card-modal-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: var(--netflix-red);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.card-modal-hero .card-modal-tag {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.card-modal-body {
+  padding: 2rem;
+}
+
+.card-modal-body h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: var(--text-primary);
+}
+
+.card-modal-body .modal-subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.card-modal-body .modal-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.card-modal-body .modal-details h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.card-modal-body .modal-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.card-modal-body .modal-details ul li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.6rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.card-modal-body .modal-details ul li::before {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  color: var(--netflix-red);
+  font-size: 0.7rem;
+  top: 3px;
+}
+
+.card-modal-body .modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.card-modal-body .modal-tech span {
+  background: rgba(229, 9, 20, 0.15);
+  color: var(--netflix-red);
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .card-modal-hero {
+    height: 150px;
+  }
+
+  .card-modal-body {
+    padding: 1.25rem;
+  }
+
+  .card-modal-body h2 {
+    font-size: 1.3rem;
+  }
+}
